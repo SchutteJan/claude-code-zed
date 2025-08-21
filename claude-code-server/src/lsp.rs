@@ -279,41 +279,7 @@ impl LanguageServer for ClaudeCodeLanguageServer {
             "Completion requested at {}:{}",
             position.line, position.character
         );
-
-        let completions = vec![
-            CompletionItem {
-                label: "@claude explain".to_string(),
-                kind: Some(CompletionItemKind::TEXT),
-                detail: Some("Explain this code with Claude".to_string()),
-                documentation: Some(Documentation::String(
-                    "Ask Claude to explain the selected code or current context".to_string(),
-                )),
-                insert_text: Some("@claude explain".to_string()),
-                ..Default::default()
-            },
-            CompletionItem {
-                label: "@claude improve".to_string(),
-                kind: Some(CompletionItemKind::TEXT),
-                detail: Some("Improve this code with Claude".to_string()),
-                documentation: Some(Documentation::String(
-                    "Ask Claude to suggest improvements for the selected code".to_string(),
-                )),
-                insert_text: Some("@claude improve".to_string()),
-                ..Default::default()
-            },
-            CompletionItem {
-                label: "@claude fix".to_string(),
-                kind: Some(CompletionItemKind::TEXT),
-                detail: Some("Fix issues in this code with Claude".to_string()),
-                documentation: Some(Documentation::String(
-                    "Ask Claude to identify and fix issues in the selected code".to_string(),
-                )),
-                insert_text: Some("@claude fix".to_string()),
-                ..Default::default()
-            },
-        ];
-
-        Ok(Some(CompletionResponse::Array(completions)))
+        Ok(None)
     }
 
     async fn code_action(&self, params: CodeActionParams) -> LspResult<Option<CodeActionResponse>> {
